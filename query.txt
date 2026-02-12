@@ -1,0 +1,19 @@
+CREATE TABLE TRANSFER_TBL (
+Transaction_ID Number(4) PRIMARY KEY,
+Account_Number Varchar2(10),
+Beneficiary_Acc_Num Varchar2(10),
+Transaction_Date Date DEFAULT SYSDATE,
+Transaction_Amount Number(10,2),
+CONSTRAINT fk_account_num
+FOREIGN KEY(Account_Number)
+REFERENCES ACCOUNT_TBL(Account_Number),
+CONSTRAINT fk_beneficiary_acc_num
+FOREIGN KEY (Beneficiary_Acc_Num)
+REFERENCES ACCOUNT_TBL(Account_Number)
+);
+SELECT * FROM TRANSFER_TBL;
+CREATE SEQUENCE transaction_seq
+START WITH 1000
+MINVALUE 1000
+MAXVALUE 9999
+INCREMENT BY 1;
